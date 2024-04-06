@@ -3,6 +3,7 @@ package com.example.mission13;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class abcActivity2 extends AppCompatActivity {
     double a , b , c ;
     TextView tV , tV2 , tV3 ,tV4 , tV5,tV6;
-
+    Button btn4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class abcActivity2 extends AppCompatActivity {
         tV4 = findViewById(R.id.tV4);
         tV5 = findViewById(R.id.tV5);
         tV6 = findViewById(R.id.tV6);
+        btn4 = findViewById(R.id.btn4);
 
         Intent gi = getIntent();
         a = gi.getDoubleExtra("result", -1);
@@ -53,8 +55,12 @@ public class abcActivity2 extends AppCompatActivity {
             tV5.setText("x1 = " + calculate_x(false, a, b, c));
         } else if (delta == 0) {
             tV4.setText("x2 = " + calculate_x(true, a, b, c));
+            
+
+
         } else {
             tV5.setText("ERROR");
+
         }
     }
 
@@ -71,8 +77,6 @@ public class abcActivity2 extends AppCompatActivity {
         x1 = x1 / 2;
         return x1;
     }
-
-
         public void go_back(View view) {
 
         finish();
