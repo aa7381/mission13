@@ -33,14 +33,17 @@ public class MainActivity extends AppCompatActivity {
     public void enter_a(View view)
     {
 
+        eT.setHint("enter a");
     }
     public void enter_b(View view)
     {
 
+        eT2.setHint("enter b");
     }
     public void enter_c(View view)
     {
 
+        eT3.setHint("enter c");
     }
 
     public void clicked(View view) {
