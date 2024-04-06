@@ -32,9 +32,9 @@ public class abcActivity2 extends AppCompatActivity {
         b = gi.getDoubleExtra("result2", -1);
         c = gi.getDoubleExtra("result3", -1);
 
-        tV.setText(String.valueOf(a));
-        tV2.setText(String.valueOf(b));
-        tV3.setText(String.valueOf(c));
+        tV.setText("a= "+ String.valueOf(a));
+        tV2.setText("b= "+String.valueOf(b));
+        tV3.setText("c= "+String.valueOf(c));
 
 
 
