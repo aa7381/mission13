@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     int count = 0;
     int count2 = 0;
     double number = 0, number2 = 0, number3 = 0;
-
+    TextView tV8 , tV9 , tV7 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,29 @@ public class MainActivity extends AppCompatActivity {
         eT = findViewById(R.id.eT);
         eT2 = findViewById(R.id.eT2);
         eT3 = findViewById(R.id.eT3);
+        tV7 = findViewById(R.id.tV7);
+        tV8 = findViewById(R.id.tV8);
+        tV9 = findViewById(R.id.tV9);
+
+
+        Intent gi = getIntent();
+        double x1 = gi.getDoubleExtra("result", -1);
+        double x2 = gi.getDoubleExtra("result2", -1);
+        String Error  = gi.getStringExtra("result3" );
+        int count3 = gi.getIntExtra("reult4",-1);
+        if (count3 == 3) {
+            tV9.setText(Error);
+        }
+        else if(count3 ==2 )
+        {
+            tV8.setText(String.valueOf(x1));
+        }
+        else
+        {
+            tV8.setText(String.valueOf(x1));
+            tV7.setText(String.valueOf(x2));
+        }
+        finish();
     }
     public void enter_a(View view)
     {
