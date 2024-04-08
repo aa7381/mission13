@@ -139,11 +139,23 @@ public class abcActivity2 extends AppCompatActivity {
     public static double calculate_x(boolean plus_min, double a, double b, double c) {
         double x1 = Math.sqrt(b * b - 4 * a * c);
         if (plus_min) {
-            x1 = -b + x1;
+            if(b<0)
+            {
+                x1=b+x1;
+            }
+            else {
+                x1 = -b + x1;
+            }
         } else {
-            x1 = -b - x1;
+            if(b<0)
+            {
+                x1=b-x1;
+            }else {
+                x1 = -b - x1;
+            }
         }
-        x1 = x1 / 2;
+        double helock = a *2;
+        x1 = x1 / helock;
         return x1;
     }
 

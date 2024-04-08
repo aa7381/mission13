@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clicked(View view) {
-        a = rnd.nextInt(100) -10;
+        a = rnd.nextInt(100) -100;
         eT.setText(String.valueOf(a));
 
-        b = rnd.nextInt(100) -10;
+        b = rnd.nextInt(100) -100;
         eT2.setText(String.valueOf(b));
 
-        c = rnd.nextInt(100) -10;
+        c = rnd.nextInt(100) -100;
         eT3.setText(String.valueOf(c));
         count2++;
 
