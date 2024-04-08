@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +17,11 @@ public class MainActivity extends AppCompatActivity {
     Random rnd = new Random();
     EditText eT, eT2, eT3;
     Button btn, btn2;
-
+    double x1 , x2 ;
     int count = 0;
     int count2 = 0;
+    String Error ;
+    int count3=0;
     double number = 0, number2 = 0, number3 = 0;
     TextView tV8 , tV9 , tV7 ;
     @Override
@@ -35,24 +38,8 @@ public class MainActivity extends AppCompatActivity {
         tV9 = findViewById(R.id.tV9);
 
 
-        Intent gi = getIntent();
-        double x1 = gi.getDoubleExtra("result", -1);
-        double x2 = gi.getDoubleExtra("result2", -1);
-        String Error  = gi.getStringExtra("result3" );
-        int count3 = gi.getIntExtra("reult4",-1);
-        if (count3 == 3) {
-            tV9.setText(Error);
-        }
-        else if(count3 ==2 )
-        {
-            tV8.setText(String.valueOf(x1));
-        }
-        else
-        {
-            tV8.setText(String.valueOf(x1));
-            tV7.setText(String.valueOf(x2));
-        }
-        finish();
+
+
     }
     public void enter_a(View view)
     {
@@ -71,15 +58,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clicked(View view) {
-        a = rnd.nextInt(100) + 1;
+        a = rnd.nextInt(100) -10;
         eT.setText(String.valueOf(a));
 
-        b = rnd.nextInt(100) + 1;
+        b = rnd.nextInt(100) -10;
         eT2.setText(String.valueOf(b));
 
-        c = rnd.nextInt(100) + 1;
+        c = rnd.nextInt(100) -10;
         eT3.setText(String.valueOf(c));
         count2++;
+
     }
 
     public void go(View view) {
@@ -108,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(si);
             count = 0;
             count2 = 0;
+
+
         }
+
     }
 }
