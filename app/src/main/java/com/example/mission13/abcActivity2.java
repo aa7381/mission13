@@ -163,7 +163,11 @@ public class abcActivity2 extends AppCompatActivity {
 
     public void go_back(View view)
     {
-
+        Intent si = new Intent(this, MainActivity.class);
+        si.putExtra("x1", x1);
+        si.putExtra("x2", x2);
+        si.putExtra("error", error);
+        startActivity(si);
         finish();
     }
 }
