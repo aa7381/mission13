@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     int count = 0;
     int count2 = 0;
     String Error ;
-    int count3=0;
-    double number = 0, number2 = 0, number3 = 0;
+
+
     TextView tV8 , tV9 , tV7 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +37,7 @@ public class MainActivity extends AppCompatActivity {
         tV8 = findViewById(R.id.tV8);
         tV9 = findViewById(R.id.tV9);
 
-        Intent gi = getIntent();
-        x1 = gi.getDoubleExtra("x1",0);
-        x2= gi.getDoubleExtra("x2",0);
-        Error = gi.getStringExtra("error" );
 
-        if(Error == "")
-            tV7.setVisibility(View.INVISIBLE);
-         else if(Error !="")
-            tV9.setText(Error);
-        else if(x1 == 0 )
-        {
-            tV7.setVisibility(View.INVISIBLE);
-        }
-        else if(x1 !=0)
-        tV7.setText("x1= " + String.valueOf(x1));
-        else if(x2 == 0)
-            tV8.setVisibility(View.INVISIBLE);
-        else if(x2 !=0)
-        tV8.setText("x2= " + String.valueOf(x2));
 
 
 
