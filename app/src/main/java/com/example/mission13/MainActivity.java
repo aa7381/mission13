@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clicked(View view) {
-        a = rnd.nextInt(100) -100;
+        a = rnd.nextInt(200) -100;
         eT.setText(String.valueOf(a));
 
-        b = rnd.nextInt(100) -100;
+        b = rnd.nextInt(200) -100;
         eT2.setText(String.valueOf(b));
 
-        c = rnd.nextInt(100) -100;
+        c = rnd.nextInt(200) -100;
         eT3.setText(String.valueOf(c));
         count2++;
 
@@ -72,23 +72,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void go(View view) {
 
-        String text = eT.getText().toString();
-        if (!text.isEmpty()) {
-            a = Double.parseDouble(text);
-            count++;
-        }
-        String text2= eT2.getText().toString();
-        if (!text2.isEmpty()) {
-            b = Double.parseDouble(text2);
-            count++;
-        }
-        String text3 = eT3.getText().toString();
-        if (!text3.isEmpty()) {
-            c = Double.parseDouble(text3);
-            count++;
-        }
+        String a = eT.getText().toString();
+        String b = eT2.getText().toString();
+        String c = eT3.getText().toString();
 
-        if (count == 3 || count2 > 0) {
+        if (a.isEmpty() | a.equals("-") | a.equals("-.") | a.equals("+") | a.equals("+.") | b.isEmpty() | b.equals("-") | b.equals("-.") | b.equals("+") | b.equals("+.") | c.isEmpty() | c.equals("-") | c.equals("-.") | c.equals("+") | c.equals("+."))
+            Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
+        else if (Double.parseDouble(a) == 0)
+            Toast.makeText(this, "Invalid input, 'a' can't be 0", Toast.LENGTH_SHORT).show();
+        else
+        {
+
+
             Intent si = new Intent(this, abcActivity2.class);
             si.putExtra("result", a);
             si.putExtra("result2", b);
@@ -96,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(si);
             count = 0;
             count2 = 0;
-
-
         }
+
+
 
     }
 }

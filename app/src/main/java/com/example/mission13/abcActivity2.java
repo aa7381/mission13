@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class abcActivity2 extends AppCompatActivity {
-    double a, b, c;
+    String a, b, c;
     TextView tV, tV2, tV3, tV4, tV5, tV6;
     Button btn4;
     double x1, x2;
@@ -39,127 +39,131 @@ public class abcActivity2 extends AppCompatActivity {
 
 
         Intent gi = getIntent();
-        a = gi.getDoubleExtra("result", -1);
-        b = gi.getDoubleExtra("result2", -1);
-        c = gi.getDoubleExtra("result3", -1);
+        a = gi.getStringExtra("result");
+        b = gi.getStringExtra("result2");
+        c = gi.getStringExtra("result3" );
 
         tV.setText("a= " + String.valueOf(a));
         tV2.setText("b= " + String.valueOf(b));
         tV3.setText("c= " + String.valueOf(c));
 
+        double A = Double.parseDouble(a);
+        double B = Double.parseDouble(b);
+        double C = Double.parseDouble(c);
+
         x1 = 0;
         x2 = 0;
 
-        CHECK(a, b, c, tV4, tV5, tV6, x1, x2, count,iV);
+        CHECK( tV4, tV5, tV6, x1, x2, count,iV,A,B,C);
     }
 
-    public static void CHECK(double a, double b, double c, TextView tV4, TextView tV5, TextView tV6, double x1, double x2, int count,ImageView iV) {
-        double delta = b * b - 4 * a * c;
+    public static void CHECK( TextView tV4, TextView tV5, TextView tV6, double x1, double x2, int count,ImageView iV,double A , double B ,double C)
+    {
+
+        double delta = B * B - 4 * A * C;
 
         if (delta > 0) {
-            x2 = calculate_x(true, a, b, c);
+            x2 = calculate_x(true, A, B, C);
             tV4.setText("x2 = " + x2);
-            x1 = calculate_x(false, a, b, c);
+            x1 = calculate_x(false, A, B, C);
             tV5.setText("x1 = " + x1);
-            count++;
-            if(x2 <0 && x1<0 &&   a>0&& b>0)
+
+            if(x2 <0 && x1<0 &&   A>0&& B>0)
             {
                 iV.setImageResource(R.drawable.screenshot_5);
             }
-            else if(x2 >0 && x1<0 &&   a>0&& b>0)
-            {
 
-            }
 
-            else if(x2 <0 && x1<0 &&   a<0&& b<0)
+            else if(x2 <0 && x1<0 &&   A<0&& C<0)
             {
                 iV.setImageResource(R.drawable.screenshot_6);
-            } else if (x1 > 0 && x2 > 0 && b < 0 && a > 0)
+            } else if (x1 > 0 && x2 > 0 && B < 0 && A> 0)
             {
                 iV.setImageResource(R.drawable.screenshot_7);
             }
-            else if(x1<0 && x2>0 && a<0 && b>0&&c>0) {
+            else if(x1<0 && x2>0 && A<0 && B>0&&C>0) {
                 iV.setImageResource(R.drawable.screenshot_8);
             }
-            else if(x1>0 && x2<0 && a<0 && b>0 && c<0)
+            else if(x1>0 && x2<0 && A<0 && B>0 && C<0)
             {
                 iV.setImageResource(R.drawable.screenshot_9);
             }
-            else if(x1<0 && x2<0 && a<0 && b<0 && c<0)
+            else if(x1<0 && x2<0 && A<0 && B<0 && C<0)
             {
                 iV.setImageResource(R.drawable.screenshot_17);
             }
-            else if(x1>0 && x2>0 && a<0 && b<0 && c<0)
+            else if(x1>0 && x2>0 && A<0 && B<0 && C<0)
             {
                 iV.setImageResource(R.drawable.screenshot_17);
             }
 
 
         } else if (delta == 0) {
-            x1 = calculate_x(true, a, b, c);
+            x1 = calculate_x(true, A, B, C);
             tV4.setText("x1 = " + x1);
-            count += 2;
-            if(x1 == 0&&a>0)
+            if(x1 == 0&&A>0)
             {
             iV.setImageResource(R.drawable.screenshot_10);
             }
-            else if(x1 == 0&&a<0&&c<0)
+            else if(x1 == 0&&A<0&&C<0)
             {
                 iV.setImageResource(R.drawable.screenshot_11);
-            } else if(x1 == 0&&a<0&&c>0)
+            } else if(x1 == 0&&A<0&&C>0)
             {
                 iV.setImageResource(R.drawable.screenshot_12);
             }
-            else if(x1 == 0&&a>0&&c==0)
+            else if(x1 == 0&&A>0&&C==0)
             {
                 iV.setImageResource(R.drawable.screenshot_13);
             }
-            else if(x1<0 && b>0 && a>0 &&c>0)
+            else if(x1<0 && B>0 && A>0 &&C>0)
             {
                 iV.setImageResource(R.drawable.screenshot_14);
             }
-            else if(x1>0 && b<0 && a>0 &&c>0)
+            else if(x1>0 && B<0 && A>0 &&C>0)
             {
-                iV.setImageResource(R.drawable.screenshot_15);
+                iV.setImageResource(R.drawable.ic_launcher_background);
             }
-            else if(x1<0 && a<0 && b<0 &&c<0 )
+            else if(x1<0 && A<0 && B<0 &&C<0 )
             {
                 iV.setImageResource(R.drawable.screenshot_16);
             }
-            else if(x1>0 && b>0 && c<0 && a<0)
+            else if(x1>0 && B>0 && C<0 && A<0)
             {
                 iV.setImageResource(R.drawable.screenshot_18);
             }
         } else {
             tV6.setText("ERROR");
-            count += 3;
+
         }
     }
 
-    public static double calculate_x(boolean plus_min, double a, double b, double c) {
-        double x1 = Math.sqrt(b * b - 4 * a * c);
+    public static double calculate_x(boolean plus_min, double A, double B, double C) {
+        double x1 = Math.sqrt(B * B - 4 * A * C);
         if (plus_min) {
-            if(b<0)
+            if(B<0)
             {
-                x1=b+x1;
+                x1=B+x1;
             }
             else {
-                x1 = -b + x1;
+                x1 = -B + x1;
             }
         } else {
-            if(b<0)
+            if(B<0)
             {
-                x1=b-x1;
+                x1=B-x1;
             }else {
-                x1 = -b - x1;
+                x1 = -B - x1;
             }
         }
-        double helock = a *2;
+        double helock = A *2;
         x1 = x1 / helock;
         return x1;
     }
 
-    public void go_back(View view) {
+    public void go_back(View view)
+    {
+
         finish();
     }
 }
